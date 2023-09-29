@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+spec:
+  initContainers:
+  - name: install-vim
+    image: alpine
+    command: ['sh', '-c', 'apk add --update vim']
+
+  containers:
+  - name: nginx 
+    image: nginx:latest
+    ports:
+    - containerPort: 80
